@@ -1,5 +1,8 @@
 # multimodal-patch-embeddings
 
+![](https://github.com/TinyVolt/multimodal-patch-embeddings/blob/0d5783fe809cfef407086cae0f8d7a80748bc950/assets/one.gif)
+![](https://github.com/TinyVolt/multimodal-patch-embeddings/blob/0d5783fe809cfef407086cae0f8d7a80748bc950/assets/four.gif)
+
 ## Directory structure
 ```
 .
