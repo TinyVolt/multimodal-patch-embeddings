@@ -35,3 +35,9 @@ poetry install
 ```
 
 ## Results
+
+![](https://github.com/TinyVolt/multimodal-patch-embeddings/blob/6f6bf04aa2a73c8c2bc585c9f11d4158fbe3602b/assets/patch_activations/1_combined.jpg)
+![](https://github.com/TinyVolt/multimodal-patch-embeddings/blob/6f6bf04aa2a73c8c2bc585c9f11d4158fbe3602b/assets/patch_activations/3_combined.jpg)
+![](https://github.com/TinyVolt/multimodal-patch-embeddings/blob/6f6bf04aa2a73c8c2bc585c9f11d4158fbe3602b/assets/patch_activations/4_combined.jpg)
+![](https://github.com/TinyVolt/multimodal-patch-embeddings/blob/6f6bf04aa2a73c8c2bc585c9f11d4158fbe3602b/assets/patch_activations/6_combined.jpg)
+![](https://github.com/TinyVolt/multimodal-patch-embeddings/blob/6f6bf04aa2a73c8c2bc585c9f11d4158fbe3602b/assets/patch_activations/7_combined.jpg)
