@@ -2,6 +2,8 @@
 
 ![](https://github.com/TinyVolt/multimodal-patch-embeddings/blob/0d5783fe809cfef407086cae0f8d7a80748bc950/assets/one.gif)
 ![](https://github.com/TinyVolt/multimodal-patch-embeddings/blob/0d5783fe809cfef407086cae0f8d7a80748bc950/assets/four.gif)
+![](https://github.com/TinyVolt/multimodal-patch-embeddings/blob/cf93109e17ea0fa4f663f8786edddebc10e7ac17/assets/six.gif)
+![](https://github.com/TinyVolt/multimodal-patch-embeddings/blob/cf93109e17ea0fa4f663f8786edddebc10e7ac17/assets/three.gif)
 
 ## Directory structure
 ```
