@@ -6,7 +6,7 @@ from torch.optim.lr_scheduler import ReduceLROnPlateau
 from torch.utils.data import DataLoader
 
 from model import VisionTransformerExtraHead
-from _types import PretrainedViTNames, vit_name_to_arg_dict, vit_extended_s_28_args_16_heads_512_width as vit_config
+from _types import PretrainedViTNames, vit_name_to_arg_dict, vit_extended_same_norm_masked_28_args_16_heads_512_width as vit_config
 from utils import load_pretrained_vit, get_hyperparam_args, save_checkpoint, find_all_images_in_directory, split_files_into_train_and_val
 from data import ClipDataset, transform_train, transform_val
 from loss import calculate_normalized_l1_loss
