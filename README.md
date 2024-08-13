@@ -65,6 +65,23 @@ torch.Size([1, 64, 512]) torch.Size([1, 1, 64])
 ## Downloading the checkpoints
 - Download the checkpoints from [here](https://huggingface.co/vinsis/multimodal-patch-embeddings) and put them in the `checkpoints` folder.
 
+The checkpoint `checkpoint_epoch24_vit_extended_dim_2024-04-11_19-18-30.pt` was not trained with the attention mask. It also does not enforce the patch embeddings to have the same norm before taking a convex sum. As a result, it does not need (and contain) the `scale` parameter defined in the `VisionTransformerExtraHead` class. To load this checkpoint, you can do something like so:
+
+```python
+import torch
+
+# make sure you are in `src/` directory
+from model import VisionTransformerExtraHead
+from _types import vit_extended_28_args_16_heads_512_width as vit_no_cls
+vit = VisionTransformerExtraHead(**vit_no_cls.model_dump())
+
+# during inference, make sure to set `same_norm` to `False`
+x = torch.randn(1,3,224,224)
+y, attn = vit(x, same_norm=False, return_all_embeds=False)
+```
+
+Please note that this checkpoint does not have multimodal patch embeddings. 
+
 ## Setting up
 ```
 poetry install
