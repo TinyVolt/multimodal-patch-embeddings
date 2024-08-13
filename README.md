@@ -5,6 +5,37 @@
 ![](https://github.com/TinyVolt/multimodal-patch-embeddings/blob/cf93109e17ea0fa4f663f8786edddebc10e7ac17/assets/six.gif)
 ![](https://github.com/TinyVolt/multimodal-patch-embeddings/blob/cf93109e17ea0fa4f663f8786edddebc10e7ac17/assets/three.gif)
 
+## Details
+This repo contains the code for training and inference of distilled, and smaller, CLIP ViT model. The distilled model has 21.3 million parameters. The vision transformer uses a novel architecture which is much simpler. It does not have CLS embedding, neither does it have a projection layer at the end. Check out the `src/mode.py/VisionTransformerExtraHead` class to see the implementation. Check out the article here: https://www.tinyvolt.com/research/multimodal-patch-embeddings
+
+## Multimodal patch embeddings
+What makes this model so special is that the embedding of each of the image patches is in the same embedding space as the final embedding. In fact, the final embedding is just a convex sum of the patch embeddings. This allows one to compare the text embedding with each of the 64 image patch embeddings.
+
+## Model output(s)
+The ViT model maps an image to an embedding. By default, the model outputs the embedding (of shape `B,512`) and the probability distribution over the image patches (of shape (`B,1,64`) where 64 is the number of patches). However if you want to get the embedding for each image patch, you just need to pass an extra parameter, `return_all_embeds`, during inference:
+
+```python
+import torch
+
+# make sure you are in `src/` directory
+from model import VisionTransformerExtraHead
+from _types import vit_extended_same_norm_masked_28_args_16_heads_512_width as vit_multimodal_patch_args
+vit = VisionTransformerExtraHead(**vit_multimodal_patch_args.model_dump())
+
+x = torch.randn(1,3,224,224)
+with torch.no_grad():
+    y, attn = vit(x)
+    print(y.shape, attn.shape)
+    y, attn = vit(x, return_all_embeds=True)
+    print(y.shape, attn.shape)
+```
+
+This will print the following:
+```python
+torch.Size([1, 512]) torch.Size([1, 1, 64])
+torch.Size([1, 64, 512]) torch.Size([1, 1, 64])
+```
+
 ## Directory structure
 ```
 .
@@ -40,6 +71,7 @@ poetry install
 ```
 
 ## Results
+The below images show patch activations for different prompts.
 
 ![](https://github.com/TinyVolt/multimodal-patch-embeddings/blob/6f6bf04aa2a73c8c2bc585c9f11d4158fbe3602b/assets/patch_activations/1_combined.jpg)
 ![](https://github.com/TinyVolt/multimodal-patch-embeddings/blob/6f6bf04aa2a73c8c2bc585c9f11d4158fbe3602b/assets/patch_activations/3_combined.jpg)
